@@ -1,11 +1,18 @@
-import logo from './logo.svg';
+
 import './App.css';
 import Item from './components/Item/item';
+import { useState } from 'react';
 
 function App() {
+  const [selected, setSelected] = useState(false);
+  
   return (
     <div className="App">
-      <Item seleccionado={true} nombre='T-shirt'/>
+      <Item 
+        isSelected={selected} 
+        onSelectedChange = {setSelected}
+        name='T-shirt'
+        />
     </div>
   );
 }

@@ -4,9 +4,14 @@ import './item.css';
 //   return <div className={`item ${props.visible}`}>Item</div>
 // }
 
-const Item = ({seleccionado, nombre}) => {
-  const classSeleccionado = seleccionado ? " item-selected" : "";
-  return <div className={`item${classSeleccionado}`}>{nombre}</div>
+const Item = ({isSelected, name, onSelectedChange}) => {
+  const clsIsSelected = isSelected ? " item-selected" : "";
+  return <div 
+          className={`item${clsIsSelected}`}
+          onClick = {() => onSelectedChange(!isSelected)}
+          >
+            {name}
+          </div>
 }
 
 export default Item;
