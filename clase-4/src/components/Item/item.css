@@ -1,0 +1,10 @@
+.item {
+  width: 100px;
+  height: 100px;
+  background-color: #cc9;
+  border: 3px solid greenyellow;
+}
+
+.item-selected {
+  border: 5px solid red;
+}
