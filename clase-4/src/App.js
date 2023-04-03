@@ -5,12 +5,24 @@ import { useEffect, useState } from 'react';
 
 function App() {
   const [selected, setSelected] = useState(false);
+  const [pasaronTresSegundos, setPasaronTresSegundos] = useState(false);
 
-  useEffect(()=>{
-    console.log("START");
-  }, []);
+  useEffect( () => {
+    if (pasaronTresSegundos) {
+      console.log("Pasaron 3 segundos.");
+    }
+  }, [pasaronTresSegundos]);
+
   useEffect(() =>{
-    console.log(`Selected: ${selected}`);
+    if(selected){
+      console.log("Está seleccionado");
+      setTimeout(() => {
+        setPasaronTresSegundos(true);
+      }, 3000);
+    } else {
+      console.log("No está seleccionado");
+      setPasaronTresSegundos(false);
+    }
   }, [selected]); 
 
   return (
