@@ -28,7 +28,7 @@ function App() {
   useEffect(() => {
     console.clear();
 
-    const mockApiProducts = new Promise((resolved, rejected) => {
+    const getMockProducts = ((resolved, rejected) => {
       setTimeout(() => {
         resolved([
           {
@@ -53,14 +53,18 @@ function App() {
       }, 3000);
     });
 
+    const mockApiProducts = new Promise(getMockProducts);
+
+    const updateProducts = (response) => {
+      setProducts(response);
+    };
+    const showError = (error) => {
+      console.log("Error inesperado, pruebe en unos minutos por favor");
+    };
+
     mockApiProducts
-      .then((response) => {
-        console.log(response);
-        setProducts(response);
-      })
-      .catch((error) => {
-        console.log("Error inesperado, pruebe en unos minutos por favor");
-      });
+      .then(updateProducts)
+      .catch(showError);
   }, [selected]);
 
   return (
